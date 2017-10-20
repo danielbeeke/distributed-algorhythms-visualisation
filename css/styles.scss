@@ -33,10 +33,15 @@ svg {
     fill: #cbd5ff;
     stroke: black;
     stroke-width: 1;
+    cursor: pointer;
   }
 
   line {
     stroke: black;
     stroke-width: 1;
+  }
+
+  text {
+    pointer-events: none;
   }
 }
