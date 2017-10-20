@@ -1,8 +1,11 @@
 export class Node {
-  constructor (id, paper) {
+  constructor (id, paper, delta) {
     this.id = id;
     this.paper = paper;
+    this.delta = delta;
     this.neighbours = new Map();
+    this.x = 0;
+    this.y = 0;
   }
 
   connectTo (node) {

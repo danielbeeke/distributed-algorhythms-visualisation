@@ -22,3 +22,21 @@ $size: 70px;
     clear: both;
   }
 }
+
+svg {
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  display: block;
+
+  circle {
+    fill: #cbd5ff;
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  line {
+    stroke: black;
+    stroke-width: 1;
+  }
+}

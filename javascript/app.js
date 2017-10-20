@@ -8,6 +8,7 @@ let node3 = paper.newNode('c');
 let node4 = paper.newNode('d');
 let node5 = paper.newNode('e');
 let node6 = paper.newNode('f');
+let node7 = paper.newNode('g');
 
 node1.connectTo(node2);
 node1.connectTo(node3);
