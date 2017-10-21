@@ -18,25 +18,34 @@ export class Node {
   }
 
   click () {
-    this.receive('red');
-    this.broadcast('red');
-  }
-
-  receive (color) {
-    if (this.element.style.fill !== color) {
-      this.element.style.fill = color;
-      this.broadcast(color);
-    }
-    else {
-      console.warn('Double receive');
-    }
-  }
-
-  broadcast (color) {
-    this.neighbours.forEach((neighbour) => {
-      setTimeout(() => {
-        neighbour.receive(color);
-      }, 900);
+    this.broadcast({
+      color: 'red'
     });
+  }
+
+  receive (message) {
+    if (message.color && this.element.style.fill !== message.color) {
+      this.element.style.fill = message.color;
+      this.broadcast(message);
+    }
+  }
+
+  broadcast (message) {
+    this.receive(message);
+
+    this.neighbours.forEach((neighbour) => {
+      this.sendMessage(neighbour, message);
+    });
+  }
+
+  sendMessage (node, message) {
+    let line = this.paper.getLineByNodeIds(this.id, node.id);
+
+    line.element.style.stroke = 'red';
+
+    setTimeout(() => {
+      node.receive(message);
+      line.element.style.stroke = 'black';
+    }, 1000);
   }
 }
